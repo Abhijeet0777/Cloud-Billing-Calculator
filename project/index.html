@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Billing Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Cloud cost planning</p>
+        <h1>Cloud Billing Calculator</h1>
+        <p class="subtitle">Estimate compute, storage, transfer, support, discounts, and tax before your next deployment.</p>
+      </div>
+      <button class="reset-button" id="resetBtn" type="button">Reset</button>
+    </header>
+
+    <section class="workspace" aria-label="Cloud billing workspace">
+      <form id="billingForm" class="calculator-panel">
+        <div class="section-heading">
+          <h2>Usage details</h2>
+          <span>Monthly estimate</span>
+        </div>
+
+        <div class="form-grid">
+          <label class="field">
+            <span>Cloud provider</span>
+            <select id="provider" name="provider">
+              <option value="aws">AWS</option>
+              <option value="azure">Azure</option>
+              <option value="gcp">Google Cloud</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Region</span>
+            <select id="region" name="region">
+              <option value="1">US Standard</option>
+              <option value="1.08">Europe</option>
+              <option value="1.14">Asia Pacific</option>
+              <option value="0.94">Reserved low-cost</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Virtual machines</span>
+            <input id="instances" name="instances" type="number" min="0" step="1" value="3" inputmode="numeric">
+          </label>
+
+          <label class="field">
+            <span>Hours per month</span>
+            <input id="hours" name="hours" type="number" min="0" max="744" step="1" value="730" inputmode="numeric">
+          </label>
+
+          <label class="field">
+            <span>Storage</span>
+            <div class="input-unit">
+              <input id="storage" name="storage" type="number" min="0" step="1" value="500" inputmode="numeric">
+              <span>GB</span>
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Data transfer</span>
+            <div class="input-unit">
+              <input id="transfer" name="transfer" type="number" min="0" step="1" value="250" inputmode="numeric">
+              <span>GB</span>
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Support plan</span>
+            <select id="support" name="support">
+              <option value="0">None</option>
+              <option value="29">Developer - $29</option>
+              <option value="100">Business - $100</option>
+              <option value="250">Enterprise - $250</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Discount</span>
+            <div class="input-unit">
+              <input id="discount" name="discount" type="number" min="0" max="100" step="1" value="10" inputmode="numeric">
+              <span>%</span>
+            </div>
+          </label>
+        </div>
+      </form>
+
+      <aside class="summary-panel" aria-label="Billing summary">
+        <div class="total-card">
+          <span>Estimated monthly bill</span>
+          <strong id="grandTotal">$0.00</strong>
+          <small id="providerNote">Based on AWS sample rates</small>
+        </div>
+
+        <div class="metric-grid" aria-label="Rate overview">
+          <div class="metric-card">
+            <span>Compute rate</span>
+            <strong id="computeRate">$0.00/hr</strong>
+          </div>
+          <div class="metric-card">
+            <span>Storage rate</span>
+            <strong id="storageRate">$0.00/GB</strong>
+          </div>
+          <div class="metric-card">
+            <span>Transfer rate</span>
+            <strong id="transferRate">$0.00/GB</strong>
+          </div>
+        </div>
+
+        <div class="breakdown">
+          <div class="row"><span>Compute</span><strong id="computeCost">$0.00</strong></div>
+          <div class="row"><span>Storage</span><strong id="storageCost">$0.00</strong></div>
+          <div class="row"><span>Data transfer</span><strong id="transferCost">$0.00</strong></div>
+          <div class="row"><span>Support</span><strong id="supportCost">$0.00</strong></div>
+          <div class="row"><span>Subtotal</span><strong id="subtotalValue">$0.00</strong></div>
+          <div class="row savings"><span>Discount</span><strong id="discountValue">-$0.00</strong></div>
+          <div class="row"><span>Tax (8%)</span><strong id="taxValue">$0.00</strong></div>
+        </div>
+
+        <div class="usage-card">
+          <h2>Usage snapshot</h2>
+          <p id="usageSummary">Enter usage to see your estimate.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

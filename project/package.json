@@ -1,0 +1,20 @@
+{
+  "name": "cloud-billing-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static Cloud Billing Calculator built with HTML, CSS, and JavaScript.",
+  "scripts": {
+    "start": "npx serve .",
+    "check": "node --check script.js",
+    "deploy:swa": "swa deploy . --env production",
+    "build": "echo Static site - no build required"
+  },
+  "keywords": [
+    "azure-static-web-apps",
+    "cloud",
+    "billing",
+    "calculator"
+  ],
+  "author": "",
+  "license": "MIT"
+}
